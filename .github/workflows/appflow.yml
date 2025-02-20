@@ -27,6 +27,29 @@ jobs:
           aws configure set aws_access_key_id ${{ secrets.ACCESS_KEY }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws configure set region us-east-2
+           
+      - name: Update S3 Bucket Policy
+        run: |
+          aws s3api put-bucket-policy --bucket appflow864 --policy '{
+              "Version": "2012-10-17",
+              "Statement": [
+                  {
+                      "Effect": "Allow",
+                      "Principal": {
+                          "Service": "appflow.amazonaws.com"
+                      },
+                      "Action": [
+                          "s3:PutObject",
+                          "s3:GetBucketAcl",
+                          "s3:PutObjectAcl"
+                      ],
+                      "Resource": [
+                          "arn:aws:s3:::appflow864",
+                          "arn:aws:s3:::appflow864/*"
+                      ]
+                  }
+              ]
+          }'
 
       - name: Create AWS AppFlow
         run: |
