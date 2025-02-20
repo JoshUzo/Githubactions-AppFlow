@@ -62,7 +62,7 @@ jobs:
             "sourceFields": []
               },
               {
-                "sourceFields": ["AccountId", "CaseNumber", "ContactEmail"],
-                "taskType": "MapAll"
+                "sourceFields": ["Id", "Status", "Type"],
+                "taskType": "Map_all"
               }
             ]'
