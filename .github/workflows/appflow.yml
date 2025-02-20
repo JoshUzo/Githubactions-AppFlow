@@ -56,8 +56,11 @@ jobs:
               }
             ]' \
             --trigger-config '{ "triggerType": "OnDemand" }' \
-            --tasks '[
-                {
-            "taskType": "MapAll"
-                }
-            ]'
+            --tasks '[{
+        "sourceFields": ["Id", "ContactEmail", "CaseNumber"],
+        "taskType": "Filter",
+        "connectorOperator": {
+            "Salesforce": "PROJECTION"
+        },
+        "taskProperties": {}
+    }]' 
