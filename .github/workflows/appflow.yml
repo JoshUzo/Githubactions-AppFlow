@@ -57,12 +57,7 @@ jobs:
             ]' \
             --trigger-config '{ "triggerType": "OnDemand" }' \
             --tasks '[
-               {
-            "taskType": "Filter",
-            "sourceFields": ["Id", "Type"]
-              },
-              {
-                "sourceFields": ["Id", "Type"],
-                "taskType": "Map_all"
-              }
+                {
+            "taskType": "MapAll"
+                }
             ]'
