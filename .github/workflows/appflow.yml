@@ -57,8 +57,12 @@ jobs:
             ]' \
             --trigger-config '{ "triggerType": "OnDemand" }' \
             --tasks '[
+               {
+            "taskType": "Filter",
+            "sourceFields": ["AccountId", "CaseNumber", "ContactEmail"]
+              },
               {
                 "sourceFields": ["AccountId", "CaseNumber", "ContactEmail"],
-                "taskType": "Map_all"
+                "taskType": "Map"
               }
             ]'
