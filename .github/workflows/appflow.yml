@@ -13,11 +13,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set Up AWS CLI
+      - name: Install AWS CLI
         run: |
           sudo apt update
-          sudo apt install -y awscli
-          aws --version
+          sudo apt install -y unzip
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install
+          aws --version  # Verify installation
 
       - name: Configure AWS Credentials
         run: |
