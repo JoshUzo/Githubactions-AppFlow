@@ -59,10 +59,10 @@ jobs:
             --tasks '[
                {
             "taskType": "Filter",
-            "sourceFields": []
+            "sourceFields": ["Id", "Type"]
               },
               {
-                "sourceFields": ["Id", "Status", "Type"],
+                "sourceFields": ["Id", "Type"],
                 "taskType": "Map_all"
               }
             ]'
