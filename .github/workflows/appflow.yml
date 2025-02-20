@@ -58,7 +58,7 @@ jobs:
             --trigger-config '{ "triggerType": "OnDemand" }' \
             --tasks '[
               {
-                "sourceFields": ["CaseNumber"],
+                "sourceFields": ["AccountId", "CaseNumber", "ContactEmail"],
                 "destinationField": "CaseNumber",
                 "taskType": "Map_all"
               }
