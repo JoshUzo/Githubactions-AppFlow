@@ -62,10 +62,21 @@ jobs:
                 "Salesforce": "PROJECTION"
                 },
                 "taskProperties": {}
-            },{
+            },
+            {
             "taskType": "Map",
-            "sourceFields": ["Id", "ContactEmail", "CaseNumber"],
+            "sourceFields": ["Id"],
             "destinationField": "Id"
+            },
+            {
+            "taskType": "Map",
+            "sourceFields": ["ContactEmail"],
+            "destinationField": "ContactEmail"
+            },
+            {
+            "taskType": "Map",
+            "sourceFields": ["CaseNumber"],
+            "destinationField": "CaseNumber"
             }]' \
             --trigger-config '{ "triggerType": "OnDemand" }' \
 
