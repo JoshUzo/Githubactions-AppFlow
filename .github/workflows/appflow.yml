@@ -40,15 +40,14 @@ jobs:
                   "object": "Account"
                 }
               },
-              "connectorProfileName": "SalesforceProfile"
+              "connectorProfileName": "Test-Connection"
             }' \
             --destination-flow-config-list '[
               {
                 "connectorType": "S3",
                 "destinationConnectorProperties": {
                   "S3": {
-                    "bucketName": "my-appflow-bucket",
-                    "bucketPrefix": "salesforce-data/",
+                    "bucketName": "sfbucket786",
                     "s3OutputFormatConfig": {
                       "fileType": "CSV"
                     }
