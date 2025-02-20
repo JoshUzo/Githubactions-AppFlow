@@ -64,7 +64,7 @@ jobs:
                 "taskProperties": {}
             },{
             "taskType": "Map",
-            "sourceFields": ["Id", "Name", "Industry"],
+            "sourceFields": ["Id", "ContactEmail", "CaseNumber"],
             "destinationField": "Id"
             }]' \
             --trigger-config '{ "triggerType": "OnDemand" }' \
