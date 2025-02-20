@@ -37,7 +37,7 @@ jobs:
               "connectorType": "Salesforce",
               "sourceConnectorProperties": {
                 "Salesforce": {
-                  "object": "Account"
+                  "object": "Case"
                 }
               },
               "connectorProfileName": "Test-Connection"
