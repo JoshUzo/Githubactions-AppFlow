@@ -59,10 +59,10 @@ jobs:
             --tasks '[
                {
             "taskType": "Filter",
-            "sourceFields": ["AccountId", "CaseNumber", "ContactEmail"]
+            "sourceFields": []
               },
               {
                 "sourceFields": ["AccountId", "CaseNumber", "ContactEmail"],
-                "taskType": "Map_all"
+                "taskType": "MapAll"
               }
             ]'
