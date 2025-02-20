@@ -1,0 +1,64 @@
+name: Create AWS AppFlow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_appflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up AWS CLI
+        run: |
+          sudo apt update
+          sudo apt install -y awscli
+          aws --version
+
+      - name: Configure AWS Credentials
+        run: |
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set region us-east-2
+
+      - name: Create AWS AppFlow
+        run: |
+          aws appflow create-flow \
+            --flow-name "SalesforceToS3Flow" \
+            --description "Sync Salesforce data to S3" \
+            --source-flow-config '{
+              "connectorType": "Salesforce",
+              "sourceConnectorProperties": {
+                "Salesforce": {
+                  "object": "Account"
+                }
+              },
+              "connectorProfileName": "SalesforceProfile"
+            }' \
+            --destination-flow-config-list '[
+              {
+                "connectorType": "S3",
+                "destinationConnectorProperties": {
+                  "S3": {
+                    "bucketName": "my-appflow-bucket",
+                    "bucketPrefix": "salesforce-data/",
+                    "s3OutputFormatConfig": {
+                      "fileType": "CSV"
+                    }
+                  }
+                }
+              }
+            ]' \
+            --trigger-config '{ "triggerType": "OnDemand" }' \
+            --tasks '[
+              {
+                "sourceFields": ["Id", "Name", "Industry"],
+                "destinationField": "Id",
+                "taskType": "Map",
+                "taskProperties": []
+              }
+            ]'
