@@ -47,7 +47,7 @@ jobs:
                 "connectorType": "S3",
                 "destinationConnectorProperties": {
                   "S3": {
-                    "bucketName": "sfbucket786",
+                    "bucketName": "appflow864",
                     "s3OutputFormatConfig": {
                       "fileType": "CSV"
                     }
