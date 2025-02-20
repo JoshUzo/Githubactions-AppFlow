@@ -60,6 +60,6 @@ jobs:
               {
                 "sourceFields": ["CaseNumber"],
                 "destinationField": "CaseNumber",
-                "taskType": "Map"
+                "taskType": "MapAll"
               }
             ]'
