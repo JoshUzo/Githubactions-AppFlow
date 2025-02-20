@@ -55,12 +55,13 @@ jobs:
                 }
               }
             ]' \
-            --trigger-config '{ "triggerType": "OnDemand" }' \
             --tasks '[{
-        "sourceFields": ["Id", "ContactEmail", "CaseNumber"],
-        "taskType": "Filter",
-        "connectorOperator": {
-            "Salesforce": "PROJECTION"
-        },
-        "taskProperties": {}
-    }]' 
+                "sourceFields": ["Id", "ContactEmail", "CaseNumber"],
+                "taskType": "Filter",
+                "connectorOperator": {
+                "Salesforce": "PROJECTION"
+                },
+                "taskProperties": {}
+            }]' \
+            --trigger-config '{ "triggerType": "OnDemand" }' \
+
